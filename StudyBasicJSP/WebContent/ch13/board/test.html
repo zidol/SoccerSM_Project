@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<link href="../etc/style_list.css?ver=1"@media screen and (min-width:512px) and (max-width:1024px) rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../etc/script.js"></script>
+<meta charset="UTF-8">
+<title>게시판</title>
+</head>
+<body>
+
+
+  <div class="banner"><img  alt="" src="../images/manubanner.jpg" width="880"></div>
+
+
+  <p>
+    글목록(전체 글:<%=count%>)
+  </p>
+
+
+  <table class="noboard">
+    <tr>
+      <td align="center">게시판에 저장된 글이 없습니다.</td>
+    </tr>
+  </table>
+
+  <table class="list">
+    <tr height="30" bgcolor="<%=value_c%>">
+      <td align="center" width="50">번호</td>
+      <td align="center" width="350">제목</td>
+      <td align="center" width="100">작성자</td>
+      <td align="center" width="150">작성일</td>
+      <td align="center" width="50">조회</td>
+      <td align="center" width="100">IP</td>
+    </tr>
+    <tr height="30">
+      <td width="50"><%=number--%></td>
+      <td width="250" align="left">
+
+        <img src="../images/level1.png" width="<%=wid%>" height="16">
+        <img class="reple1"src="../images/reple1.png"> <%
+
+         <a class="sb" href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage%>">
+
+         <blink><img class="hot" src="../images/hot1.png" border="0" height="16"></blink>
+
+      </td>
+      <td width="100" align="center">
+        <a href="mailto:<%=article.getEmail()%>"></a>
+      </td>
+      <td width="150"></td>
+      <td width="50"></td>
+      <td width="100"></td>
+    </tr>
+
+  </table>
+  <table class="writebutton">
+    <tr>
+      <td id="writebtn" align="right" bgcolor="<%=value_c%>"><a href="writeForm.jsp">글쓰기</a>
+      </td>
+    </tr>
+  </table>
+  <div class="pagei">
+
+  <a  href="list.jsp?pageNum=<%=startPage - 10%>">[이전]</a>
+  <a  href="list.jsp?pageNum=<%=i%>">[<%=i%>]
+  </a>
+
+  <a href="list.jsp?pageNum=<%=startPage + 10%>">[다음]</a>
+  </div>
+
+</body>
+</html>
