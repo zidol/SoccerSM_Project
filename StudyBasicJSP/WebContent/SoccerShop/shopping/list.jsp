@@ -36,13 +36,14 @@
     </nav>
 <%-- <%String product_kind =request.getParameter("product_kind"); %> --%>
 
-<table align="center" >
+ <div class="container">
+ <table align="center" >
 <tr>
 <td width="250" valign="top">
 
 <jsp:include page="../module/left.jsp" flush="false"/>
 </td>
-<td  align="center" width="700">
+<td  align="center" width="850">
 <%-- <%
 List<SoccerShopDataBean> productLists = null;
 SoccerShopDataBean productList = null;
@@ -102,6 +103,7 @@ for(int i=0; i<productLists.size(); i++) {
 </td>
 </tr>
 </table>
+ </div>
  <footer class="py-5 bg-dark">
       <div class="container">
         <!-- <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p> -->

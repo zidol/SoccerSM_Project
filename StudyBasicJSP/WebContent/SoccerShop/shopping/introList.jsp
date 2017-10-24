@@ -21,7 +21,7 @@ String product_kindName="";
 
 SoccerShopDBBean productProcess = SoccerShopDBBean.getInstance();
 for(int i=1; i<=5; i++) {
-	productLists = productProcess.getProducts(i+"00", 4);
+	productLists = productProcess.getProducts(i+"00", 3);
 	
 	if(productLists[0].getProduct_kind().equals("100")) {
 		product_kindName = "축구화";
@@ -82,9 +82,11 @@ for(int j=0; j<productLists.length; j++) {
                   <h4 class="card-title">
                     <a href="productContent.jsp?product_id=<%=productLists[j].getProduct_id()%>&product_kind=<%=productLists[0].getProduct_kind()%>"><%=productLists[j].getProduct_title() %></a>
                   </h4>
-                  정가 : <%=NumberFormat.getInstance().format(productLists[j].getProduct_price()) %>원<br>
-			판매가 : <b><font color="red"><%=NumberFormat.getInstance().format((int)(productLists[j].getProduct_price()*((double)(100-productLists[j].getDiscount_rate())/100))) %></font></b>원
-                  <p class="card-text">제조사 : <%=productLists[j].getBrand()%><br>생산지 : <%=productLists[j].getArea()%>
+                  <span style="text-decoration:line-through;">
+                	  정가 : <%=NumberFormat.getInstance().format(productLists[j].getProduct_price()) %>원<br></span>
+					판매가 : <b><font color="red"><%=NumberFormat.getInstance().format((int)(productLists[j].getProduct_price()*((double)(100-productLists[j].getDiscount_rate())/100))) %></font></b>원
+                  <p class="card-text">제조사 : <%=productLists[j].getBrand()%><br>
+                  <%-- 생산지 : <%=productLists[j].getArea()%> --%>
                   </p>
                 </div>
                 <div class="card-footer">
