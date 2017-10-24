@@ -15,6 +15,7 @@ public class SoccerShopDataBean {
 	private String product_content;
 	private byte discount_rate;
 	private Timestamp reg_date;
+	private String product_contimage;
 	public int getProduct_id() {
 		return product_id;
 	}
@@ -86,6 +87,12 @@ public class SoccerShopDataBean {
 	}
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
+	}
+	public String getProduct_contimage() {
+		return product_contimage;
+	}
+	public void setProduct_contimage(String product_contimage) {
+		this.product_contimage = product_contimage;
 	}
 	
 }

@@ -133,6 +133,11 @@ try {
 				<input type="file" name="product_image"><%=product.getProduct_image() %></td>
 		</tr>
 		<tr>
+			<td width="100" >내용이미지</td>
+			<td width="400" align="left">
+				<input type="file" name="product_contimage"><%=product.getProduct_contimage()%></td>
+		</tr>
+		<tr>
 			<td width="100" >상품설명</td>
 			<td width="400" align="left">
 			<textarea name="product_content" rows="13" cols="40"><%=product.getProduct_content() %>

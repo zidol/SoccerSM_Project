@@ -18,6 +18,7 @@
 <%
 String realFolder="";
 String filename="";
+String filename2="";
 MultipartRequest imageUp = null;
 
 String saveFolder = "/imageFile";
@@ -33,9 +34,11 @@ try{
 	
 	while(files.hasMoreElements()) {
 		String name = (String)files.nextElement();
-		
 		filename = imageUp.getFilesystemName(name);
-	}
+		String name2 = (String)files.nextElement();
+		filename2 = imageUp.getFilesystemName(name2); 
+	
+	 }
 }catch (IOException ioe) {
 	System.out.println(ioe);
 } catch(Exception e) {
@@ -78,6 +81,7 @@ String day = (imageUp.getParameter("launch_day").length()==1)?
 		product.setProduct_content(product_content);
 		product.setDiscount_rate(Byte.parseByte(discount_rate));
 		product.setReg_date(new Timestamp(System.currentTimeMillis()));
+		product.setProduct_contimage(filename2);
 		
 		SoccerShopDBBean productProcess = SoccerShopDBBean.getInstance();
 		productProcess.updateProduct(product, product_id);

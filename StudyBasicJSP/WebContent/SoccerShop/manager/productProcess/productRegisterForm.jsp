@@ -106,7 +106,7 @@ enctype="multipart/form-data">
 		<tr>
 			<td width="100" >내용이미지</td>
 			<td width="400" align="left">
-				<input type="file" name="product_image">
+				<input type="file" name="product_contimage">
 			</td>
 		</tr>
 		<tr>

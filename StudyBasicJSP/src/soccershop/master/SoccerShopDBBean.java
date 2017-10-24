@@ -70,7 +70,7 @@ public class SoccerShopDBBean {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql ="";
-		sql = "insert into product values(seq_product_id.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?)";
+		sql = "insert into product values(seq_product_id.NEXTVAL,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			conn = getConnection();
 			
@@ -87,6 +87,7 @@ public class SoccerShopDBBean {
 			pstmt.setString(9, product.getProduct_content());
 			pstmt.setByte(10, product.getDiscount_rate());
 			pstmt.setTimestamp(11, product.getReg_date());
+			pstmt.setString(12, product.getProduct_contimage());
 			
 			pstmt.executeUpdate();
 		} catch (Exception ex) {
@@ -163,6 +164,7 @@ public class SoccerShopDBBean {
 					product.setProduct_image(rs.getString("product_image"));
 					product.setDiscount_rate(rs.getByte("discount_rate"));
 					product.setReg_date(rs.getTimestamp("reg_date"));
+					product.setProduct_contimage(rs.getString("product_contimage"));
 					
 					productList.add(product);
 				} while(rs.next());
@@ -217,6 +219,7 @@ public class SoccerShopDBBean {
 					product.setProduct_image(rs.getString("product_image"));
 					product.setDiscount_rate(rs.getByte("discount_rate"));
 					product.setReg_date(rs.getTimestamp("reg_date"));
+					product.setProduct_contimage(rs.getString("product_contimage"));
 					
 					productList[i] = product;
 					
@@ -263,6 +266,7 @@ public class SoccerShopDBBean {
 				product.setProduct_image(rs.getString("product_image"));
 				product.setProduct_content(rs.getString("product_content"));
 				product.setDiscount_rate(rs.getByte("discount_rate"));
+				product.setProduct_contimage(rs.getString("product_contimage"));
 			}
 		} catch(Exception ex) {
 			ex.printStackTrace();
@@ -283,7 +287,7 @@ public class SoccerShopDBBean {
 		String sql ="";
 		sql = "update product set product_kind=?, product_title=?, product_price=?,"
 				+ "product_count=?, area=?, brand=?, launch_date=?,"
-				+ "product_image=?, product_content=?, discount_rate=? where product_id=?";
+				+ "product_image=?, product_content=?, discount_rate=?, product_contimage=? where product_id=?";
 		
 		try {
 			
@@ -301,7 +305,9 @@ public class SoccerShopDBBean {
 		pstmt.setString(8, product.getProduct_image());
 		pstmt.setString(9, product.getProduct_content());
 		pstmt.setByte(10, product.getDiscount_rate());
-		pstmt.setInt(11, productId);
+		pstmt.setString(11, product.getProduct_contimage());
+		pstmt.setInt(12, productId);
+		
 		
 		pstmt.executeUpdate();
 		} catch(Exception ex) {

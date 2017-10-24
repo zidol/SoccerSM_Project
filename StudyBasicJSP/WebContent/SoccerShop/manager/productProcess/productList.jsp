@@ -88,6 +88,7 @@ if(product_kind.equals("100")) {
 		<td align="center" width="100">제조사</td>
 		<td align="center" width="100">출시일</td>
 		<td align="center" width="50">상품이미지</td>
+		<td align="center" width="50">상품내용이미지</td>
 		<td align="center" width="50">할인율</td>
 		<td align="center" width="70">등록일</td>
 		<td align="center" width="50">수정</td>
@@ -114,6 +115,7 @@ if(product_kind.equals("100")) {
 		<td width="100"><%=product.getBrand() %></td>
 		<td width="100"><%=product.getLaunch_date() %></td>
 		<td width="50"><%=product.getProduct_image() %></td>
+		<td width="50"><%=product.getProduct_contimage() %></td>
 		<td width="50"><%=product.getDiscount_rate() %></td>
 		<td width="50"><%=sdf.format(product.getReg_date()) %></td>
 		<td width="50">

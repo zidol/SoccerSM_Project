@@ -94,7 +94,7 @@ else if(product_kind.equals("500"))
 		<tr>
 			<td width="375" colspan="2" align="left">
 				<br><%=productList.getProduct_content().replaceAll("\r\n", "<br>")%>
-				<img style="margin-left: 10px;" src="../../imageFile/<%=productList.getProduct_image() %>"
+				<img style="margin-left: 10px;" src="../../imageFile/<%=productList.getProduct_contimage() %>"
 			border="0">
 			</td>
 	</table>
