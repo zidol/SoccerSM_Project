@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="soccershop.shopping.BuyDataBean" %>
 <%@ page import="soccershop.shopping.BuyDBBean" %>
-<%@ page import="java.util.* %>
+
 <%@ page import="java.text.NumberFormat" %>
 <%@ include file="../etc/color.jspf" %>
 <!DOCTYPE html>

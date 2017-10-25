@@ -23,10 +23,44 @@ String id = "";
 int buy_price = 0;
 
 try {
-	if(session.getAttribute("id")==null)
+	if(session.getAttribute("id")==null){
 		id="not";
-	else
-		id=(String)session.getAttribute("id");
+%>		
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.jsp">SoccerMall</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+          	<li class="nav-item">
+          		<a class="nav-link" href="./login.html">로그인</a>
+          	</li>            
+          </ul>
+        </div>
+      </div>
+    </nav>
+<%	} else {
+	id=(String)session.getAttribute("id");%>
+	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.jsp">SoccerMall</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+          	<li>
+          		<jsp:include page="../module/top.jsp" flush="false"/>
+          	</li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+<%}
+
 } catch(Exception e) {}
 SoccerShopDataBean productList = null;
 String product_kindName="";

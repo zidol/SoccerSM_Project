@@ -60,7 +60,7 @@ public class BankDBBean {
 		try {
 			conn = getConnection();
 			sql = "select account, bank, name from "
-					+ "member m inner join bank b on m.id = b.id "
+					+ "member m join bank b on m.id = b.id "
 					+ "where b.id = ? "
 					+ "order by b.reg_date desc";
 			pstmt = conn.prepareStatement(sql);
