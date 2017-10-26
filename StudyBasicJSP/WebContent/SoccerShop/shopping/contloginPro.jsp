@@ -24,7 +24,8 @@ if(check==1) {
 	session.setAttribute("id",id);
 	/* response.sendRedirect("index.jsp"); */%>
 <script>
-history.go(-2);	
+history.go(-2);
+
 </script>
 <%} else if (check==0) {%>
 <script>
