@@ -35,7 +35,7 @@
       </div>
     </nav>
 <%-- <%String product_kind =request.getParameter("product_kind"); %> --%>
-
+<br>
  <div class="container">
  <table align="center" >
 <tr>
@@ -71,32 +71,7 @@ for(int i=0; i<productLists.size(); i++) {
 	productList = (SoccerShopDataBean)productLists.get(i);%> --%>
 
 <div class="row">
-	<%-- <div class="col-lg-4 col-md-6 mb-4" >
-              <div class="card h-100" width="300">
-                <a href="productContent.jsp?product_id=<%=productList.getProduct_id()%>&product_kind=<%=product_kind%>"><img src="../../imageFile/<%=productList.getProduct_image()%>" 
-                width="150" height="200" alt=""></a>
-                <div class="card-body">
-                  
-                    <a href="productContent.jsp?product_id=<%=productList.getProduct_id()%>&product_kind=<%=product_kind%>"><%=productList.getProduct_title() %></a>
-                 <br>
-                    정가 : <%=NumberFormat.getInstance().format(productList.getProduct_price()) %>원<br>
-			판매가 : <b><font color="red"><%=NumberFormat.getInstance().format((int)(productList.getProduct_price()*
-					((double)(100-productList.getDiscount_rate())/100))) %></font></b>원
-                  <p class="card-text">제조사 : <%=productList.getBrand() %><br>생산지 : <%=productList.getArea()%>
-                  </p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted"><%if(productList.getProduct_count()==0){ %>
-				<b>일시품절</b>
-				<%}else if (productList.getProduct_count()<=5){ %>
-					<font class="blink" color="red"><b>인기 상품!! 재고 얼마 없음</b></font>
-					<%}else{ %>
-				<font class="blink" color="red"><b>신제품</b></font>
-				<%} %></small>
-                </div>
-              </div>
-            </div> --%>
-            <jsp:include page="./list_include.jsp" flush="false"/>
+	<jsp:include page="./list_include.jsp" flush="false"/>
 </div>
 
 <%-- <%} %> --%>

@@ -200,7 +200,7 @@ public class BuyDBBean {
 		try {
 			conn =getConnection();
 			
-			sql = "select * from buy where buyer=?";
+			sql = "select * from buy where buyer=? order by buy_date desc";
 			pstmt =conn.prepareStatement(sql);
 			
 			pstmt.setString(1, id);
@@ -243,7 +243,7 @@ public class BuyDBBean {
 		
 		try {
 			conn = getConnection();
-			sql = "select * from buy";
+			sql = "select * from buy order by buy_date desc";
 			
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();

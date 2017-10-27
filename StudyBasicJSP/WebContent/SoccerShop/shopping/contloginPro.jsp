@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="soccershop.shopping.CustomerDBBean" %>
+<%@ page import="soccershop.master.SoccerShopDataBean" %>
 <%@ page import="soccershop.master.SoccerShopDBBean" %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,8 @@
 <%
 String id = request.getParameter("id");
 String passwd = request.getParameter("passwd");
-
+String product_kind = request.getParameter("product_kind");
+String product_id = request.getParameter("product_id");
 CustomerDBBean member = CustomerDBBean.getInstance();
 int check = member.userCheck(id,passwd);
 
@@ -22,9 +24,10 @@ int mgcheck = manager.mangaerCheck(id, passwd);
 
 if(check==1) {
 	session.setAttribute("id",id);
-	/* response.sendRedirect("index.jsp"); */%>
+	/* response.sendRedirect(request.getHeader("referer")); */
+	/* response.sendRedirect(""); */%>
 <script>
-history.go(-2);
+location.href="productContent.jsp?product_id=<%=product_id %>&product_kind=<%=product_kind %>";
 
 </script>
 <%} else if (check==0) {%>

@@ -35,7 +35,7 @@ try {
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
           	<li class="nav-item">
-          		<a class="nav-link" href="./login.html">로그인</a>
+          		<a class="nav-link" href="./login.jsp?product_id=<%=product_id %>&product_kind=<%=product_kind%>">로그인</a>
           	</li>            
           </ul>
         </div>
@@ -80,6 +80,7 @@ else if(product_kind.equals("400"))
 else if(product_kind.equals("500"))
 	product_kindName = "악세사리";
 %>
+<br>
 <form name="inform" method="post" action="cartInsert.jsp">
 	<table align="center" border="1">
 		<tr height="30">
