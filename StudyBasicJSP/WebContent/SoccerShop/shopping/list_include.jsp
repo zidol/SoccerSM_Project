@@ -50,10 +50,10 @@ for(int i=0; i<productLists.size(); i++) {
 	productList = (SoccerShopDataBean)productLists.get(i);%>
 
 
-	<div class="col-lg-3 col-md-4 mb-4" >
+	<div class="col-lg-3 col-md-4 mb-5" >
               <div class="card h-100" >
-                <a href="productContent.jsp?product_id=<%=productList.getProduct_id()%>&product_kind=<%=product_kind%>"><img src="../../imageFile/<%=productList.getProduct_image()%>" 
-                width="150" height="200" alt=""></a>
+                <a href="productContent.jsp?product_id=<%=productList.getProduct_id()%>&product_kind=<%=product_kind%>"><img align="center" src="../../imageFile/<%=productList.getProduct_image()%>" 
+                width="140" height="180" alt=""></a>
                 <div class="card-body">
                 	<a href="productContent.jsp?product_id=<%=productList.getProduct_id()%>&product_kind=<%=product_kind%>"><%=productList.getProduct_title() %></a>
                  	<br>

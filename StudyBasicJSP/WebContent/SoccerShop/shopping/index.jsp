@@ -13,10 +13,10 @@
     <title>Shop Item - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css?ver=1" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="bootstrap/css/shop-item.css" rel="stylesheet">
+    <link href="bootstrap/css/shop-item.css?ver=1" rel="stylesheet">
 	<style type="text/css">
 		#manu-train{
 			opacity: 0.4;
@@ -52,7 +52,7 @@
         <div class="col-lg-3">
           <h1 class="my-4">SoccerMall</h1>
           <div class="list-group">
-            <a href="../shopping/list.jsp?product_kind=all" class="list-group-item active">전체보기</a>
+            <a href="../shopping/list.jsp?product_kind=all" class="list-group-item">전체보기</a>
             <a href="../shopping/list.jsp?product_kind=100" class="list-group-item ">축구화</a>
             <a href="../shopping/list.jsp?product_kind=200" class="list-group-item">유니폼</a>
              <a href="../shopping/list.jsp?product_kind=300" class="list-group-item">트레이닝복</a>

@@ -28,7 +28,6 @@ if(check==1) {
 	/* response.sendRedirect(""); */%>
 <script>
 location.href="productContent.jsp?product_id=<%=product_id %>&product_kind=<%=product_kind %>";
-
 </script>
 <%} else if (check==0) {%>
 <script>
