@@ -194,7 +194,7 @@ public class SoccerShopDBBean {
 			conn = getConnection();
 			String sql1 = "select * from "
 					+ "(select rownum as rnum, pr.* "
-					+ "from (select * from product where product_kind=?) pr) "
+					+ "from (select * from product) pr) "
 					+ "where rnum between ? and ?";
 			String sql2 = "select * from "
 					+ "(select rownum as rnum, pr.* "
@@ -203,9 +203,8 @@ public class SoccerShopDBBean {
 			
 			if(product_kind.equals("all")) {
 				pstmt = conn.prepareStatement(sql1);
-				pstmt.setString(1, product_kind);
-				pstmt.setInt(2, start);
-				pstmt.setInt(3, end);
+				pstmt.setInt(1, start);
+				pstmt.setInt(2, end);
 			} else {
 				pstmt = conn.prepareStatement(sql2);
 				pstmt.setString(1, product_kind);

@@ -42,13 +42,13 @@ if(count>0) {
 %> --%>
 <%		
 
-		String product_id = request.getParameter("product_id");
+		String pageNum = request.getParameter("pageNum");
 		String product_kind = request.getParameter("product_kind");
-		if (product_id == null) {
-			product_id = "1";
+		if (pageNum == null) {
+			pageNum = "1";
 		}
 
-		int currentPage = Integer.parseInt(product_id);
+		int currentPage = Integer.parseInt(pageNum);
 		int startRow = (currentPage - 1) * pageSize + 1;
 		int endRow = currentPage * pageSize;
 		int count = 0;
@@ -58,15 +58,17 @@ if(count>0) {
 		SoccerShopDBBean dbPro = SoccerShopDBBean.getInstance();
 		count = dbPro.getProductCount();
 		if (count > 0) {
-			productList = dbPro.getProducts(product_kind, startRow, pageSize);
+			productList = dbPro.getProducts(product_kind, startRow, endRow);
 		}
 
-		number = count - (currentPage - 1) * pageSize;
+		//number = count - (currentPage - 1) * pageSize;
 	%>
 
 <%
 String product_kindName="";
-if(product_kind.equals("100")) {
+if(product_kind.equals("all")) {
+	product_kindName="전체";
+} else if(product_kind.equals("100")) {
 	product_kindName="축구화";
 } else if(product_kind.equals("200")) {
 	product_kindName="유니폼";
@@ -76,15 +78,13 @@ if(product_kind.equals("100")) {
 	product_kindName="축구공";
 } else if(product_kind.equals("500")) {
 	product_kindName="악세사리";
-} else if(product_kind.equals("all")) {
-	product_kindName="전체";
-}
+} 
 %>
 <p align="center"><a  href="../managerMain.jsp" align="center">관리자 메인으로</a></p>
 <p align="center"><%=product_kindName %> 분류의 목록:
-<%if(product_kind.equals("all")){ %>
+<%if(product_kind.equals("all")){ number = count - (currentPage - 1) * pageSize;%>
 <%=count %>개
-<%}else{ %>
+<%}else{number = productList.size() - (currentPage - 1) * pageSize; %>
 <%=productList.size() %>개
 <%} %>
 </p>
@@ -114,7 +114,7 @@ if(product_kind.equals("100")) {
 		등록된 상품 이 없습니다.
 	</tr>
 </table>
-<%}else{ %>
+<%}else { %>
 <table align="center">
 	<tr height="30" >
 		<td align="center" width="30">번호</td>
@@ -125,8 +125,8 @@ if(product_kind.equals("100")) {
 		<td align="center" width="70">생산지</td>
 		<td align="center" width="100">제조사</td>
 		<td align="center" width="100">출시일</td>
-		<td align="center" width="50">상품이미지</td>
-		<td align="center" width="50">상품내용이미지</td>
+		<td align="center" width="150">상품이미지</td>
+		<td align="center" width="150">상품내용이미지</td>
 		<td align="center" width="50">할인율</td>
 		<td align="center" width="70">등록일</td>
 		<td align="center" width="50">수정</td>
@@ -138,7 +138,7 @@ if(product_kind.equals("100")) {
 	
 	%>
 	<tr height="30" align="center">
-		<td width="30"><%=++number %></td>
+		<td width="30"><%=number-- %></td>
 		<td width="50"><%=product.getProduct_kind() %></td>
 		<td width="100"><%=product.getProduct_title()%></td>
 		<td width="50"><%=product.getProduct_price()%></td>
@@ -163,7 +163,8 @@ if(product_kind.equals("100")) {
 	</tr>
 	<%} %>
 	</table>
-	<div class="pagei">
+	<%} %>
+	<div class="pagei" align="center">
 		<%
 		if (count > 0) {
 			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
@@ -198,7 +199,6 @@ if(product_kind.equals("100")) {
 }
 	%>
 	</div>
-	<%} %>
 	<br>
 	
 	<p align="center"><a href="../managerMain.jsp">관리자 메인으로</a></p>

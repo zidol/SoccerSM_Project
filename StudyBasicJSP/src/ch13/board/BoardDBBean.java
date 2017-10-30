@@ -32,7 +32,17 @@ public class BoardDBBean {
 		return ds.getConnection();
 	}
 	
+	/*	private Connection getConnection() throws Exception {
+	Connection conn = null;
+	String jdbcUrl = "jdbc:mysql://localhost:3306/basicjsp";
+	String dbId = "jspid";
+	String dbPasswd	 = "jsppass";
+	Class.forName("com.mysql.jdbc.Driver");
+	conn = DriverManager.getConnection(jdbcUrl, dbId, dbPasswd);
 	
+	return conn;
+}*/
+
 	
 	public void insertArticle(BoardDataBean article) throws Exception {
 		Connection conn = null;
@@ -71,20 +81,22 @@ public class BoardDBBean {
 				re_level=0;
 			}
 			
-			sql= "insert into board(writer, email, subject, passwd, reg_date,"
-					+ "ref, re_step, re_level, content, ip) values(?,?,?,?,?,?,?,?,?,?)";
+			sql= "insert into board(num, writer, email, subject, passwd, reg_date,"
+					+ "ref, re_step, re_level, content, ip) values(?,?,?,?,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, article.getWriter());
-			pstmt.setString(2, article.getEmail());
-			pstmt.setString(3, article.getSubject());
-			pstmt.setString(4, article.getPasswd());
-			pstmt.setTimestamp(5, article.getReg_date());
-			pstmt.setInt(6, ref);
-			pstmt.setInt(7, re_step);
-			pstmt.setInt(8, re_level);
-			pstmt.setString(9, article.getContent());
-			pstmt.setString(10, article.getIp());
+			
+			pstmt.setInt(1, number);
+			pstmt.setString(2, article.getWriter());
+			pstmt.setString(3, article.getEmail());
+			pstmt.setString(4, article.getSubject());
+			pstmt.setString(5, article.getPasswd());
+			pstmt.setTimestamp(6, article.getReg_date());
+			pstmt.setInt(7, ref);
+			pstmt.setInt(8, re_step);
+			pstmt.setInt(9, re_level);
+			pstmt.setString(10, article.getContent());
+			pstmt.setString(11, article.getIp());
 			
 			pstmt.executeUpdate();
 			
@@ -98,6 +110,7 @@ public class BoardDBBean {
 	}
 	
 	//board 테이블에 저장된 전체 글의 수를 얻어냄(select문) <=list.jsp에서 사용
+	
 	public int getArticleCount() throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -128,6 +141,7 @@ public class BoardDBBean {
 	}
 	
 	//글의 목록(복수 개의 글)을 가져옴 (select 문) <=list.jsp에서 z사용
+	
 	public List<BoardDataBean> getArticles(int start, int end) throws Exception {
 		
 		Connection conn = null;
@@ -141,7 +155,6 @@ public class BoardDBBean {
 				+ "(select rownum as rnum, bo.* "
 				+ "from (select * from board order by ref desc, re_step asc) bo) "
 				+ "where rnum between ? and ?";//오라클은 몇번~ 몇번까지
-		
 		List<BoardDataBean> articleList = null;
 		try {
 			conn =  getConnection();
@@ -182,6 +195,7 @@ public class BoardDBBean {
 	}
 	
 	//글의 내용을 보기(1개의 글)(select문)<=content.jsp 페이지에서 사용
+	
 	public BoardDataBean getArticle(int num) throws Exception {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
