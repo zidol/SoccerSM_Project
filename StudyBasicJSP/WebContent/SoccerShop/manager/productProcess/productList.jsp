@@ -15,15 +15,18 @@
 <body bgcolor="<%=bodyback_c%>">
 
 <%!
+int pageSize = 10;
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-%><%
+%>
+<%
 String id="";
 try {
 	id = (String)session.getAttribute("id");
 	if(id==null || id.equals("")) {
 		response.sendRedirect("../logon/managerLoginForm.jsp");
 	} else {
-%><%
+%>
+<%-- <%
 List<SoccerShopDataBean> productList = null;
 int number=0;
 String product_kind="";
@@ -36,7 +39,32 @@ int count = productProcess.getProductCount();
 if(count>0) {
 	productList = productProcess.getProducts(product_kind);
 }
-%><%
+%> --%>
+<%		
+
+		String product_id = request.getParameter("product_id");
+		String product_kind = request.getParameter("product_kind");
+		if (product_id == null) {
+			product_id = "1";
+		}
+
+		int currentPage = Integer.parseInt(product_id);
+		int startRow = (currentPage - 1) * pageSize + 1;
+		int endRow = currentPage * pageSize;
+		int count = 0;
+		int number = 0;
+		List<SoccerShopDataBean> productList = null;
+
+		SoccerShopDBBean dbPro = SoccerShopDBBean.getInstance();
+		count = dbPro.getProductCount();
+		if (count > 0) {
+			productList = dbPro.getProducts(product_kind, startRow, pageSize);
+		}
+
+		number = count - (currentPage - 1) * pageSize;
+	%>
+
+<%
 String product_kindName="";
 if(product_kind.equals("100")) {
 	product_kindName="축구화";
@@ -64,6 +92,16 @@ if(product_kind.equals("100")) {
 	<tr>
 		<td align="right" >
 		<a href="productRegisterForm.jsp">상품 등록</a>
+		<select name="jump" onchange="location.href=this.value">
+		<option value="productList.jsp?product_kind=all" selected="selected">목록보기</option>
+		<option value="productList.jsp?product_kind=all">전체목록</option>
+		<option value="productList.jsp?product_kind=100">축구화</option>
+		<option value="productList.jsp?product_kind=200">유니폼</option>
+		<option value="productList.jsp?product_kind=300">트레이닝복</option>
+		<option value="productList.jsp?product_kind=400">축구공</option>
+		<option value="productList.jsp?product_kind=500">악세사리</option>
+		</select>
+		</td>
 	</tr>
 </table>
 <%
@@ -80,7 +118,7 @@ if(product_kind.equals("100")) {
 <table align="center">
 	<tr height="30" >
 		<td align="center" width="30">번호</td>
-		<td align="center" width="50">상품분류</td>
+		<td align="center" width="70">상품분류</td>
 		<td align="center" width="100">상품명</td>
 		<td align="center" width="50">가격</td>
 		<td align="center" width="50">수량</td>
@@ -125,8 +163,44 @@ if(product_kind.equals("100")) {
 	</tr>
 	<%} %>
 	</table>
+	<div class="pagei">
+		<%
+		if (count > 0) {
+			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			int startPage = 1;
+			// 시작페이지 번호 설정, pagebloc이 10dlaus 1, 11, 21
+			if (currentPage % 10 != 0)
+				startPage = (int) (currentPage / 10) * 10 + 1;
+			else
+				startPage = ((int) (currentPage / 10) - 1) * 10 + 1;
+
+			int pageBlock = 10;
+			int endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount)
+				endPage = pageCount;
+
+			if (startPage > 10) {
+	%>
+	<a  href="productList.jsp?product_kind=<%=product_kind %>&pageNum=<%=startPage - 10%>">[이전]</a>
+	<%
+		}
+			for (int i = startPage; i <= endPage; i++) {
+	%>
+	<a  href="productList.jsp?product_kind=<%=product_kind %>&pageNum=<%=i%>">[<%=i%>]
+	</a>
+	<%
+		}
+			if (endPage < pageCount) {
+	%>
+	<a href="productList.jsp?product_kind=<%=product_kind %>&pageNum=<%=startPage + 10%>">[다음]</a>
+	<%
+	}
+}
+	%>
+	</div>
 	<%} %>
 	<br>
+	
 	<p align="center"><a href="../managerMain.jsp">관리자 메인으로</a></p>
 
 <%

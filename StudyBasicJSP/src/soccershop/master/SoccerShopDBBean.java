@@ -10,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import ch13.board.BoardDataBean;
+
 
 
 public class SoccerShopDBBean {
@@ -149,6 +151,71 @@ public class SoccerShopDBBean {
 			
 			if(rs.next()) {
 				productList = new ArrayList<SoccerShopDataBean>();
+				
+				do {
+					SoccerShopDataBean product = new SoccerShopDataBean();
+					
+					product.setProduct_id(rs.getInt("product_id"));
+					product.setProduct_kind(rs.getString("product_kind"));
+					product.setProduct_title(rs.getString("product_title"));
+					product.setProduct_price(rs.getInt("product_price"));
+					product.setProduct_count(rs.getShort("product_count"));
+					product.setArea(rs.getString("area"));
+					product.setBrand(rs.getString("brand"));
+					product.setLaunch_date(rs.getString("launch_date"));
+					product.setProduct_image(rs.getString("product_image"));
+					product.setDiscount_rate(rs.getByte("discount_rate"));
+					product.setReg_date(rs.getTimestamp("reg_date"));
+					product.setProduct_contimage(rs.getString("product_contimage"));
+					
+					productList.add(product);
+				} while(rs.next());
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			if(rs != null) 
+				try {rs.close();}catch(SQLException ex) {}
+			if(pstmt != null)
+				try {pstmt.close();} catch(SQLException ex) {}
+			if(conn != null)
+				try {conn.close();} catch(SQLException ex) {}
+		}
+		return productList;
+	}
+	
+	public List<SoccerShopDataBean> getProducts(String product_kind, int start, int end) throws Exception{
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<SoccerShopDataBean> productList = null;
+		
+		try {
+			conn = getConnection();
+			String sql1 = "select * from "
+					+ "(select rownum as rnum, pr.* "
+					+ "from (select * from product where product_kind=?) pr) "
+					+ "where rnum between ? and ?";
+			String sql2 = "select * from "
+					+ "(select rownum as rnum, pr.* "
+					+ "from (select * from product where product_kind=?) pr) "
+					+ "where rnum between ? and ?";
+			
+			if(product_kind.equals("all")) {
+				pstmt = conn.prepareStatement(sql1);
+				pstmt.setString(1, product_kind);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+			} else {
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, product_kind);
+				pstmt.setInt(2, start);
+				pstmt.setInt(3, end);
+			}
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				productList = new ArrayList<SoccerShopDataBean>(end);
 				
 				do {
 					SoccerShopDataBean product = new SoccerShopDataBean();
@@ -343,4 +410,5 @@ public class SoccerShopDBBean {
 				try {conn.close();} catch(SQLException ex) {}
 		}
 	}
+	
 }
