@@ -41,7 +41,6 @@ if(count>0) {
 }
 %> --%>
 <%		
-
 		String pageNum = request.getParameter("pageNum");
 		String product_kind = request.getParameter("product_kind");
 		if (pageNum == null) {
@@ -61,9 +60,8 @@ if(count>0) {
 			productList = dbPro.getProducts(product_kind, startRow, endRow);
 		}
 
-		//number = count - (currentPage - 1) * pageSize;
+		number = count - (currentPage - 1) * pageSize;
 	%>
-
 <%
 String product_kindName="";
 if(product_kind.equals("all")) {
@@ -82,10 +80,13 @@ if(product_kind.equals("all")) {
 %>
 <p align="center"><a  href="../managerMain.jsp" align="center">관리자 메인으로</a></p>
 <p align="center"><%=product_kindName %> 분류의 목록:
-<%if(product_kind.equals("all")){ number = count - (currentPage - 1) * pageSize;%>
+<%if(product_kind.equals("all")){ /* number = count - (currentPage - 1) * pageSize; */%>
 <%=count %>개
-<%}else{number = productList.size() - (currentPage - 1) * pageSize; %>
-<%=productList.size() %>개
+<%}else{ 
+count = dbPro.getProductCount(product_kind);
+number = count - (currentPage - 1) * pageSize;
+%>
+<%=count %>개
 <%} %>
 </p>
 <table align="center">
@@ -104,10 +105,7 @@ if(product_kind.equals("all")) {
 		</td>
 	</tr>
 </table>
-<%
- if(count==0) {
-
-%>
+<%if(count==0) { %>
 <table align="center">
 	<tr>
 		<td >
@@ -169,7 +167,7 @@ if(product_kind.equals("all")) {
 		if (count > 0) {
 			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
 			int startPage = 1;
-			// 시작페이지 번호 설정, pagebloc이 10dlaus 1, 11, 21
+			// 시작페이지 번호 설정, pageblock이 10이면 1, 11, 21
 			if (currentPage % 10 != 0)
 				startPage = (int) (currentPage / 10) * 10 + 1;
 			else

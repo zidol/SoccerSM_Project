@@ -7,7 +7,7 @@
 <title>로그인</title>
 </head>
 <body>
-<h2>로그인 폼</h2>
+<h2>관리자 로그인</h2>
 <form method="post" action="managerLoginPro.jsp">
 	아이디 : <input type="text" name ="id" maxlength="50"
 	style="ime-mode:inactive;"><br>

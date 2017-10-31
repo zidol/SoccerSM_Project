@@ -36,7 +36,7 @@ if(count==0){
 <table align="center">
 	<tr align="center"><td>구매목록이 없습니다.</td></tr>
 </table>
-<a class="tomain" href="../managerMain.jsp">관리자 메인으로</a>
+<h5 align="center"><a class="tomain" href="../managerMain.jsp">관리자 메인으로</a></h5>
 <%
 }else {
 	buyLists = buyProcess.getBuyList();

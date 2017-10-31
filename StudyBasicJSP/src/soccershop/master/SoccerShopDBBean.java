@@ -129,6 +129,35 @@ public class SoccerShopDBBean {
 		}
 		return x;
 	}
+	public int getProductCount(String product_kind) throws Exception {
+		Connection conn  = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int x = 0;
+		
+		try {
+			conn = getConnection();
+			
+			pstmt = conn.prepareStatement("select count(*) from product"
+					+ " where product_kind=?");
+			pstmt.setString(1, product_kind);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next())
+				x = rs.getInt(1);
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}  finally {
+			if(rs != null) 
+				try {rs.close();}catch(SQLException ex) {}
+			if(pstmt != null)
+				try {pstmt.close();} catch(SQLException ex) {}
+			if(conn != null)
+				try {conn.close();} catch(SQLException ex) {}
+		}
+		return x;
+	}
 	
 	public List<SoccerShopDataBean> getProducts(String product_kind) throws Exception{
 		Connection conn = null;
@@ -184,7 +213,8 @@ public class SoccerShopDBBean {
 		return productList;
 	}
 	
-	public List<SoccerShopDataBean> getProducts(String product_kind, int start, int end) throws Exception{
+	public List<SoccerShopDataBean> getProducts(String product_kind, int start,
+			int end) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

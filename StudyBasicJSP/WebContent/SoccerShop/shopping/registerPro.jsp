@@ -29,7 +29,11 @@ member.setAddress(address);
 member.setTel(tel);
 member.setReg_date(new Timestamp(System.currentTimeMillis()));
 regMember.insertMember(member);
-response.sendRedirect("index.jsp");
+/* response.sendRedirect("index.jsp"); */
 %>
+<script type="text/javascript">
+alert("회원가입을 환영합니다.");
+location.href="index.jsp";
+</script>
 </body>
 </html>
