@@ -59,8 +59,6 @@ try {
           </ul>
     </div>
 		
-		<!-- <input type="button" value="로그아웃"
-		onclick="javascript:window.location='../shopping/logout.jsp'"> -->
 	<%} else { %>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">

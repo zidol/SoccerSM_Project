@@ -9,7 +9,7 @@
 <link href="../../etc/main_list.css?ver=3" rel="stylesheet" type="text/css">
 </head>
 <body >
-<p>상품 삭제</p>
+<p align="center">상품 삭제</p>
 <br>
 <%
 String id = "";

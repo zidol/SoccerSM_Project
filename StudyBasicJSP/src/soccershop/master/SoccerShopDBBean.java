@@ -77,7 +77,6 @@ public class SoccerShopDBBean {
 			conn = getConnection();
 			
 			pstmt = conn.prepareStatement(sql);
-//			pstmt.setInt(1, book.getBook_id());
 			pstmt.setString(1, product.getProduct_kind());
 			pstmt.setString(2, product.getProduct_title());
 			pstmt.setInt(3, product.getProduct_price());
@@ -224,11 +223,11 @@ public class SoccerShopDBBean {
 			conn = getConnection();
 			String sql1 = "select * from "
 					+ "(select rownum as rnum, pr.* "
-					+ "from (select * from product) pr) "
+					+ "from (select * from product order by reg_date desc) pr) "
 					+ "where rnum between ? and ?";
 			String sql2 = "select * from "
 					+ "(select rownum as rnum, pr.* "
-					+ "from (select * from product where product_kind=?) pr) "
+					+ "from (select * from product where product_kind=? order by reg_date desc) pr) "
 					+ "where rnum between ? and ?";
 			
 			if(product_kind.equals("all")) {
@@ -383,13 +382,13 @@ public class SoccerShopDBBean {
 		String sql ="";
 		sql = "update product set product_kind=?, product_title=?, product_price=?,"
 				+ "product_count=?, area=?, brand=?, launch_date=?,"
-				+ "product_image=?, product_content=?, discount_rate=?, product_contimage=? where product_id=?";
+				+ "product_image=?, product_content=?, discount_rate=?, "
+				+ "product_contimage=? where product_id=?";
 		
 		try {
 			
 		conn = getConnection();
 		pstmt = conn.prepareStatement(sql);
-		
 		
 		pstmt.setString(1, product.getProduct_kind());
 		pstmt.setString(2, product.getProduct_title());
@@ -404,8 +403,8 @@ public class SoccerShopDBBean {
 		pstmt.setString(11, product.getProduct_contimage());
 		pstmt.setInt(12, productId);
 		
-		
 		pstmt.executeUpdate();
+		
 		} catch(Exception ex) {
 			ex.printStackTrace();
 		} finally {

@@ -3,19 +3,19 @@ package soccershop.master;
 import java.sql.Timestamp;
 
 public class SoccerShopDataBean {
-	private int product_id;
-	private String product_kind;
-	private String product_title;
-	private int product_price;
-	private short product_count;
-	private String area;
-	private String brand;
-	private String launch_date;
-	private String product_image;
-	private String product_content;
-	private byte discount_rate;
-	private Timestamp reg_date;
-	private String product_contimage;
+	private int product_id;//상픔 등록번호
+	private String product_kind;//상품 분류
+	private String product_title;//상품 이름
+	private int product_price;//상품 가격
+	private short product_count;//상품의 재고수량
+	private String area;//생산지
+	private String brand;//제조사
+	private String launch_date;//출시일
+	private String product_image;//상품이미지
+	private String product_content;//상품 내용
+	private byte discount_rate;//할인율
+	private Timestamp reg_date;//등록 날짜
+	private String product_contimage;//상품 내용이미지
 	public int getProduct_id() {
 		return product_id;
 	}

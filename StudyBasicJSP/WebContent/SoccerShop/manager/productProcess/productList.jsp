@@ -26,20 +26,7 @@ try {
 		response.sendRedirect("../logon/managerLoginForm.jsp");
 	} else {
 %>
-<%-- <%
-List<SoccerShopDataBean> productList = null;
-int number=0;
-String product_kind="";
 
-product_kind = request.getParameter("product_kind");
-
-SoccerShopDBBean productProcess = SoccerShopDBBean.getInstance();
-int count = productProcess.getProductCount();
-
-if(count>0) {
-	productList = productProcess.getProducts(product_kind);
-}
-%> --%>
 <%		
 		String pageNum = request.getParameter("pageNum");
 		String product_kind = request.getParameter("product_kind");
@@ -62,8 +49,7 @@ if(count>0) {
 
 		number = count - (currentPage - 1) * pageSize;
 	%>
-<%
-String product_kindName="";
+<%String product_kindName="";
 if(product_kind.equals("all")) {
 	product_kindName="전체";
 } else if(product_kind.equals("100")) {
@@ -76,8 +62,7 @@ if(product_kind.equals("all")) {
 	product_kindName="축구공";
 } else if(product_kind.equals("500")) {
 	product_kindName="악세사리";
-} 
-%>
+} %>
 <p align="center"><a  href="../managerMain.jsp" align="center">관리자 메인으로</a></p>
 <p align="center"><%=product_kindName %> 분류의 목록:
 <%if(product_kind.equals("all")){ /* number = count - (currentPage - 1) * pageSize; */%>
@@ -119,7 +104,7 @@ number = count - (currentPage - 1) * pageSize;
 		<td align="center" width="70">상품분류</td>
 		<td align="center" width="100">상품명</td>
 		<td align="center" width="50">가격</td>
-		<td align="center" width="50">수량</td>
+		<td align="center" width="70">수량</td>
 		<td align="center" width="70">생산지</td>
 		<td align="center" width="100">제조사</td>
 		<td align="center" width="100">출시일</td>

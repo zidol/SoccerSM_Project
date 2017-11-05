@@ -18,9 +18,9 @@
             <a href="../shopping/list.jsp?product_kind=all" class="list-group-item">전체보기</a>
             <a href="../shopping/list.jsp?product_kind=100" class="list-group-item">축구화</a>
             <a href="../shopping/list.jsp?product_kind=200" class="list-group-item">유니폼</a>
-             <a href="../shopping/list.jsp?product_kind=300" class="list-group-item">트레이닝복</a>
-              <a href="../shopping/list.jsp?product_kind=400" class="list-group-item">축구공</a>
-               <a href="../shopping/list.jsp?product_kind=500" class="list-group-item">악세사리</a>
+            <a href="../shopping/list.jsp?product_kind=300" class="list-group-item">트레이닝복</a>
+            <a href="../shopping/list.jsp?product_kind=400" class="list-group-item">축구공</a>
+            <a href="../shopping/list.jsp?product_kind=500" class="list-group-item">악세사리</a>
           </div>
 </body>
 </html>

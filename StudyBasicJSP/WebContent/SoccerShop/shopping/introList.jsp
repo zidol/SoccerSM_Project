@@ -77,10 +77,12 @@ for(int j=0; j<productLists.length; j++) {
 	
 	<div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="productContent.jsp?product_id=<%=productLists[j].getProduct_id()%>&product_kind=<%=productLists[0].getProduct_kind()%>"><img class="card-img-top" src="../../imageFile/<%=productLists[j].getProduct_image()%>" alt=""></a>
+                <a href="productContent.jsp?product_id=<%=productLists[j].getProduct_id()%>&product_kind=<%=productLists[0].getProduct_kind()%>">
+                <img class="card-img-top" src="../../imageFile/<%=productLists[j].getProduct_image()%>" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="productContent.jsp?product_id=<%=productLists[j].getProduct_id()%>&product_kind=<%=productLists[0].getProduct_kind()%>"><%=productLists[j].getProduct_title() %></a>
+                    <a href="productContent.jsp?product_id=<%=productLists[j].getProduct_id()%>&product_kind=<%=productLists[0].getProduct_kind()%>">
+                    <%=productLists[j].getProduct_title() %></a>
                   </h4>
                   <span style="text-decoration:line-through;">
                 	  정가 : <%=NumberFormat.getInstance().format(productLists[j].getProduct_price()) %>원<br></span>

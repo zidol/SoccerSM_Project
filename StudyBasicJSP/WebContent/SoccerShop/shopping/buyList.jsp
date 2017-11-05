@@ -74,11 +74,7 @@ for(int i=0; i<buyLists.size(); i++) {
 	
 	if(i<buyLists.size()-1){
 		BuyDataBean compare = buyLists.get(i+1);
-		compareId = compare.getBuy_id();
-		
-	/* 	BuyDataBean pre = buyLists.get(buyLists.size()-2);
-		preId = pre.getBuy_id(); */
-				
+		compareId = compare.getBuy_id();	
 	}
 %>
 <table align="center" border="1">

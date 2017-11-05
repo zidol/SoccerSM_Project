@@ -28,7 +28,7 @@ try {
 %>
 
 
-<p>글내용 보기</p>
+<p id="content_title">글내용 보기</p>
 
 <form>
 	<table border="1">

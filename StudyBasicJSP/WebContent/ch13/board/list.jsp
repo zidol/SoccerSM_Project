@@ -40,7 +40,7 @@
 		BoardDBBean dbPro = BoardDBBean.getInstance();
 		count = dbPro.getArticleCount();
 		if (count > 0) {
-			articleList = dbPro.getArticles(startRow, pageSize);
+			articleList = dbPro.getArticles(startRow, endRow);
 		}
 
 		number = count - (currentPage - 1) * pageSize;

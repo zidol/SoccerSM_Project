@@ -18,15 +18,11 @@
 </style>
 </head>
 <body bgcolor="<%=bodyback_c%>">
-<%
-String buyer = (String)session.getAttribute("id");
-%>
-
+<%String buyer = (String)session.getAttribute("id");%>
 <%
 List<BuyDataBean> buyLists = null;
 BuyDataBean buyList = null;
 int count = 0;
-
 BuyDBBean buyProcess = BuyDBBean.getInstance();
 count = buyProcess.getListCount();
 

@@ -61,7 +61,7 @@ try {
 			</td>
 		</tr>
 		<tr>
-			<td width="100" >제목</td>
+			<td width="100" >상품명</td>
 			<td width="400" align="left">
 				<input type="text" size="50" maxlength="50" name="product_title"
 				value="<%=product.getProduct_title()%>">

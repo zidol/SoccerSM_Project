@@ -58,10 +58,8 @@ onclick="javascript:window.location='list.jsp?product_kind=all'">
 	
 </table>
 
-<%
-	}else {
-		cartLists = productProcess.getCart(buyer);
-%>
+<%	}else {
+		cartLists = productProcess.getCart(buyer);%>
 <h3 align="center" ><b>장바구니</b></h3>
 <form name="inform" method="post" action="updateCart.jsp">
 	<table align="center">
@@ -72,12 +70,8 @@ onclick="javascript:window.location='list.jsp?product_kind=all'">
 			<td width="150">수량</td>
 			<td width="150">금액</td>
 		</tr>
-		
-		<%
-		for(int i=0; i<cartLists.size(); i++) {
-			cartList = (CartDataBean)cartLists.get(i);
-		
-		%>
+<%		for(int i=0; i<cartLists.size(); i++) {
+			cartList = (CartDataBean)cartLists.get(i);%>
 		<tr>
 			<td width="50"> <%=++number %></td>
 			<td width="300" align="left">

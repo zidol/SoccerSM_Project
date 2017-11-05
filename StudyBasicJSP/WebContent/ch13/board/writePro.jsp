@@ -14,6 +14,7 @@
 <jsp:useBean id="article" class="ch13.board.BoardDataBean" scope="page">
 	<jsp:setProperty name="article" property="*" />
 </jsp:useBean>
+
 <%
 article.setReg_date(new Timestamp(System.currentTimeMillis()));
 article.setIp(request.getRemoteAddr());

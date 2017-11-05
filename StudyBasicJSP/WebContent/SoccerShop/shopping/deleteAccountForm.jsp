@@ -24,7 +24,7 @@ if(buyer==null) {
 %>
 <h3 align="center"><%=buyer %> 님의 계좌 삭제</h3>
 <form method="post" action="deleteAccoutPro.jsp">
-	<table align="center">
+	<table align="center" border="1">
 	<tr>
 		<td width="80" align="center">결제 계좌</td>
 		<td width="300" align="center"><%=accountList %></td>

@@ -17,11 +17,11 @@ String product_kind = request.getParameter("product_kind");
 if(session.getAttribute("id") == null) {
 	response.sendRedirect("shopMain.jsp");
 } else {
-	CartDBBean bookProcess = CartDBBean.getInstance();
+	CartDBBean productProcess = CartDBBean.getInstance();
 	if(list.equals("all"))
-		bookProcess.deleteAll(buyer);
+		productProcess.deleteAll(buyer);
 	else
-		bookProcess.deleteList(Integer.parseInt(list));
+		productProcess.deleteList(Integer.parseInt(list));
 	
 	response.sendRedirect("cartList.jsp?product_kind=" + product_kind);
 }
