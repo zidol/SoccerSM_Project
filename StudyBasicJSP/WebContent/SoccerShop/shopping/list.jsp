@@ -113,20 +113,20 @@
 							</div>
 							<div class="card-footer">
 								<small class="text-muted"> <%
- 	if (productList.getProduct_count() == 0) {
- %>
-									<b>일시품절</b> <%
- 	} else if (productList.getProduct_count() <= 10) {
- %> <font
-									class="blink" color="red"><b>인기 상품!!</b></font> <%
- 	} else if (productList.getProduct_count() <= 5) {
- %>
-									<font class="blink" color="red"><b>>재고 얼마 없음</b></font> <%
- 	} else {
- %>
-									<font class="blink" color="red"><b>신제품</b></font> <%
- 	}
- %>
+							 	if (productList.getProduct_count() == 0) {
+							 %>
+								<b>일시품절</b> <%
+							 	} else if (productList.getProduct_count() <= 10) {
+							 %> <font
+								class="blink" color="red"><b>인기 상품!!</b></font> <%
+							 	} else if (productList.getProduct_count() <= 5) {
+							 %>
+								<font class="blink" color="red"><b>>재고 얼마 없음</b></font> <%
+							 	} else {
+							 %>
+								<font class="blink" color="red"><b>신제품</b></font> <%
+							 	}
+							 %>
 								</small>
 							</div>
 						</div>
