@@ -78,7 +78,7 @@ for(int j=0; j<productLists.length; j++) {
 	<div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
                 <a href="productContent.jsp?product_id=<%=productLists[j].getProduct_id()%>&product_kind=<%=productLists[0].getProduct_kind()%>">
-                <img class="card-img-top" src="../../imageFile/<%=productLists[j].getProduct_image()%>" alt=""></a>
+                <img class="card-img-top" width="150" src="../../imageFile/<%=productLists[j].getProduct_image()%>" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="productContent.jsp?product_id=<%=productLists[j].getProduct_id()%>&product_kind=<%=productLists[0].getProduct_kind()%>">
